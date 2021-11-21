@@ -4,7 +4,7 @@ import os.path
 dirname = os.path.dirname(__file__)
 
 df = pd.read_excel(
-    os.path.join(dirname, '../data/hachioji_hinanjo.xlsx'),
+    os.path.join(dirname, '../data_original/hachioji_hinanjo.xlsx'),
     sheet_name='投入データ',
     index_col=0,
     na_values=[9],
