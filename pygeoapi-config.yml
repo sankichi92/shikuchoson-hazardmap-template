@@ -90,7 +90,8 @@ metadata:
     # role: pointOfContact
 
 resources:
-  obs:
+  
+  hinanjo:
     type: collection
     title: 避難所
     description: 東京都八王子市避難場所・避難所
