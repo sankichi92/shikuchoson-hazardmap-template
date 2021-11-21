@@ -29,9 +29,9 @@
 
 server:
   bind:
-    host: 127.0.0.1
-    port: 5000
-  url: http://localhost:5000
+    host: ${HOST}
+    port: ${PORT}
+  url: ${BASE_URL}
   mimetype: application/json; charset=UTF-8
   encoding: utf-8
   gzip: false
@@ -40,14 +40,14 @@ server:
     - ja-JP
     - en-US
   cors: true
-  pretty_print: true
+  pretty_print: false
   limit: 20
   map:
     url: https://tile.openstreetmap.org/{z}/{x}/{y}.png
     attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
 
 logging:
-  level: INFO
+  level: ${PYGEOAPI_LOG_LEVEL}
 
 metadata:
   identification:
