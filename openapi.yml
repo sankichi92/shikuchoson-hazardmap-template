@@ -1,0 +1,464 @@
+components:
+  parameters:
+    f:
+      description: The optional f parameter indicates the output format which the
+        server shall provide as part of the response document.  The default format
+        is GeoJSON.
+      explode: false
+      in: query
+      name: f
+      required: false
+      schema:
+        default: json
+        enum:
+        - json
+        - html
+        - jsonld
+        type: string
+      style: form
+    lang:
+      description: The optional lang parameter instructs the server return a response
+        in a certain language, if supported.  If the language is not among the available
+        values, the Accept-Language header language will be used if it is supported.
+        If the header is missing, the default server language is used. Note that providers
+        may only support a single language (or often no language at all), that can
+        be different from the server language.  Language strings can be written in
+        a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple (e.g. "de")
+        or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+      in: query
+      name: lang
+      required: false
+      schema:
+        default: ja-JP
+        enum:
+        - ja-JP
+        - en-US
+        type: string
+    properties:
+      description: The properties that should be included for each feature. The parameter
+        value is a comma-separated list of property names.
+      explode: false
+      in: query
+      name: properties
+      required: false
+      schema:
+        items:
+          type: string
+        type: array
+      style: form
+    skipGeometry:
+      description: This option can be used to skip response geometries for each feature.
+      explode: false
+      in: query
+      name: skipGeometry
+      required: false
+      schema:
+        default: false
+        type: boolean
+      style: form
+    startindex:
+      description: The optional startindex parameter indicates the index within the
+        result set from which the server shall begin presenting results in the response
+        document.  The first element has an index of 0 (default).
+      explode: false
+      in: query
+      name: startindex
+      required: false
+      schema:
+        default: 0
+        minimum: 0
+        type: integer
+      style: form
+  responses:
+    '200':
+      description: successful operation
+    Queryables:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/queryables'
+      description: successful queryables operation
+    default:
+      content:
+        application/json:
+          schema:
+            $ref: https://raw.githubusercontent.com/opengeospatial/ogcapi-processes/master/core/openapi/schemas/exception.yaml
+      description: Unexpected error
+  schemas:
+    queryable:
+      properties:
+        description:
+          description: a human-readable narrative describing the queryable
+          type: string
+        language:
+          default:
+          - en
+          description: the language used for the title and description
+          type: string
+        queryable:
+          description: the token that may be used in a CQL predicate
+          type: string
+        title:
+          description: a human readable title for the queryable
+          type: string
+        type:
+          description: the data type of the queryable
+          type: string
+        type-ref:
+          description: a reference to the formal definition of the type
+          format: url
+          type: string
+      required:
+      - queryable
+      - type
+      type: object
+    queryables:
+      properties:
+        queryables:
+          items:
+            $ref: '#/components/schemas/queryable'
+          type: array
+      required:
+      - queryables
+      type: object
+info:
+  contact:
+    email: takahiro-miyoshi@sankichi.net
+    name: "\u6771\u4EAC\u90FD\u516B\u738B\u5B50\u5E02"
+    url: https://www.city.hachioji.tokyo.jp/contents/open/001/p005861.html
+  description: "\u6771\u4EAC\u90FD\u516B\u738B\u5B50\u5E02\u30CF\u30B6\u30FC\u30C9\
+    \u30DE\u30C3\u30D7 API (Tokyo OSS Party!! 2021 \u30C1\u30FC\u30E0I)"
+  license:
+    name: CC-BY 4.0 license
+    url: https://creativecommons.org/licenses/by/4.0/
+  termsOfService: https://creativecommons.org/licenses/by/4.0/
+  title: "\u516B\u738B\u5B50\u5E02\u30CF\u30B6\u30FC\u30C9\u30DE\u30C3\u30D7"
+  version: 0.11.0
+  x-keywords:
+  - "\u30CF\u30B6\u30FC\u30C9\u30DE\u30C3\u30D7"
+  - api
+openapi: 3.0.2
+paths:
+  /:
+    get:
+      description: Landing page
+      operationId: getLandingPage
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/LandingPage
+        '400':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '500':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: Landing page
+      tags:
+      - server
+  /collections:
+    get:
+      description: Collections
+      operationId: getCollections
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/Collections
+        '400':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '500':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: Collections
+      tags:
+      - server
+  /collections/obs:
+    get:
+      description: "\u6771\u4EAC\u90FD\u516B\u738B\u5B50\u5E02\u907F\u96E3\u5834\u6240\
+        \u30FB\u907F\u96E3\u6240"
+      operationId: describeObsCollection
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/Collection
+        '400':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '404':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '500':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: "Get \u907F\u96E3\u6240 metadata"
+      tags:
+      - obs
+  /collections/obs/items:
+    get:
+      description: "\u6771\u4EAC\u90FD\u516B\u738B\u5B50\u5E02\u907F\u96E3\u5834\u6240\
+        \u30FB\u907F\u96E3\u6240"
+      operationId: getObsFeatures
+      parameters:
+      - &id001
+        description: The optional f parameter indicates the output format which the
+          server shall provide as part of the response document.  The default format
+          is GeoJSON.
+        explode: false
+        in: query
+        name: f
+        required: false
+        schema:
+          default: json
+          enum:
+          - json
+          - html
+          - jsonld
+          - csv
+          type: string
+        style: form
+      - &id002
+        description: The optional lang parameter instructs the server return a response
+          in a certain language, if supported.  If the language is not among the available
+          values, the Accept-Language header language will be used if it is supported.
+          If the header is missing, the default server language is used. Note that
+          providers may only support a single language (or often no language at all),
+          that can be different from the server language.  Language strings can be
+          written in a complex (e.g. "fr-CA,fr;q=0.9,en-US;q=0.8,en;q=0.7"), simple
+          (e.g. "de") or locale-like (e.g. "de-CH" or "fr_BE") fashion.
+        in: query
+        name: lang
+        required: false
+        schema:
+          default: ja-JP
+          enum:
+          - ja-JP
+          - en-US
+          type: string
+      - $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/bbox
+      - $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/limit
+      - description: The properties that should be included for each feature. The
+          parameter value is a comma-separated list of property names.
+        explode: false
+        in: query
+        name: properties
+        required: false
+        schema:
+          items:
+            enum:
+            - ID
+            - "\u540D\u79F0"
+            - "\u4F4F\u6240"
+            - "\u7DEF\u5EA6"
+            - "\u7D4C\u5EA6"
+            - "\u907F\u96E3\u5834\u6240"
+            - "\u907F\u96E3\u6240"
+            - "\u6D2A\u6C34"
+            - "\u5D16\u5D29\u308C\u3001\u571F\u77F3\u6D41\u53CA\u3073\u5730\u6ED1\u308A"
+            - "\u5730\u9707"
+            - "\u5185\u6C34\u6C3E\u6FEB"
+            - "\u5099\u8003"
+            type: string
+          type: array
+        style: form
+      - $ref: '#/components/parameters/skipGeometry'
+      - $ref: https://raw.githubusercontent.com/opengeospatial/ogcapi-records/master/core/openapi/parameters/sortby.yaml
+      - $ref: '#/components/parameters/startindex'
+      - explode: false
+        in: query
+        name: ID
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: "\u540D\u79F0"
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: "\u4F4F\u6240"
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: "\u7DEF\u5EA6"
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: "\u7D4C\u5EA6"
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: "\u907F\u96E3\u5834\u6240"
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: "\u907F\u96E3\u6240"
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: "\u6D2A\u6C34"
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: "\u5D16\u5D29\u308C\u3001\u571F\u77F3\u6D41\u53CA\u3073\u5730\u6ED1\u308A"
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: "\u5730\u9707"
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: "\u5185\u6C34\u6C3E\u6FEB"
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: false
+        in: query
+        name: "\u5099\u8003"
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        '200':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/Features
+        '400':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '404':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '500':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: "Get \u907F\u96E3\u6240 items"
+      tags:
+      - obs
+  /collections/obs/items/{featureId}:
+    get:
+      description: "\u6771\u4EAC\u90FD\u516B\u738B\u5B50\u5E02\u907F\u96E3\u5834\u6240\
+        \u30FB\u907F\u96E3\u6240"
+      operationId: getObsFeature
+      parameters:
+      - $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/parameters/featureId
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/Feature
+        '400':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '404':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '500':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: "Get \u907F\u96E3\u6240 item by id"
+      tags:
+      - obs
+  /collections/obs/queryables:
+    get:
+      description: "\u6771\u4EAC\u90FD\u516B\u738B\u5B50\u5E02\u907F\u96E3\u5834\u6240\
+        \u30FB\u907F\u96E3\u6240"
+      operationId: getObsQueryables
+      parameters:
+      - *id001
+      - *id002
+      responses:
+        '200':
+          $ref: '#/components/responses/Queryables'
+        '400':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '404':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/NotFound
+        '500':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: "Get \u907F\u96E3\u6240 queryables"
+      tags:
+      - obs
+  /conformance:
+    get:
+      description: API conformance definition
+      operationId: getConformanceDeclaration
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      responses:
+        '200':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ConformanceDeclaration
+        '400':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        '500':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/ServerError
+      summary: API conformance definition
+      tags:
+      - server
+  /openapi:
+    get:
+      description: This document
+      operationId: getOpenapi
+      parameters:
+      - $ref: '#/components/parameters/f'
+      - $ref: '#/components/parameters/lang'
+      - description: UI to render the OpenAPI document
+        explode: false
+        in: query
+        name: ui
+        required: false
+        schema:
+          default: swagger
+          enum:
+          - swagger
+          - redoc
+          type: string
+        style: form
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/ogcapi-features-1.yaml#/components/responses/InvalidParameter
+        default:
+          $ref: '#/components/responses/default'
+      summary: This document
+      tags:
+      - server
+servers:
+- description: "\u6771\u4EAC\u90FD\u516B\u738B\u5B50\u5E02\u30CF\u30B6\u30FC\u30C9\
+    \u30DE\u30C3\u30D7 API (Tokyo OSS Party!! 2021 \u30C1\u30FC\u30E0I)"
+  url: https://hachioji-hazardmap.herokuapp.com/
+tags:
+- description: "\u6771\u4EAC\u90FD\u516B\u738B\u5B50\u5E02\u30CF\u30B6\u30FC\u30C9\
+    \u30DE\u30C3\u30D7 API (Tokyo OSS Party!! 2021 \u30C1\u30FC\u30E0I)"
+  externalDocs:
+    description: information
+    url: https://www.city.hachioji.tokyo.jp/emergency/bousai/m12873/001/p005647.html
+  name: server
+- description: SpatioTemporal Asset Catalog
+  name: stac
+- description: "\u6771\u4EAC\u90FD\u516B\u738B\u5B50\u5E02\u907F\u96E3\u5834\u6240\
+    \u30FB\u907F\u96E3\u6240"
+  name: obs

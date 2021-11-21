@@ -29,7 +29,7 @@
 
 server:
   bind:
-    host: ${HOST}
+    host: 127.0.0.1
     port: ${PORT}
   url: ${BASE_URL}
   mimetype: application/json; charset=UTF-8
