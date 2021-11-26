@@ -25,10 +25,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prebuild": "node scripts/fetch-city-osm.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "fetch-city-osm": "node scripts/fetch-city-osm.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -40,5 +40,6 @@
     ">0.2%",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "homepage": "."
 }
