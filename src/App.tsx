@@ -1,30 +1,38 @@
+import { FeatureCollection } from "geojson";
 import "leaflet/dist/leaflet.css";
-import { useEffect, useState } from "react";
+import osmtogeojson from "osmtogeojson";
 import { GeoJSON, MapContainer, TileLayer } from "react-leaflet";
-import { fetchBoundary } from "./fetchCityBoundary";
+import cityOsm from "./city-osm.json";
+import config from "./hazardmap-config.json";
 
 function App() {
-  const [cityBoundary, setCityBoundary] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetchBoundary("八王子市");
-      // @ts-ignore
-      setCityBoundary(response);
-    })();
-  }, []);
+  const bounds = cityOsm.elements[0].bounds;
+  const node = cityOsm.elements[0].members.find((member) => {
+    return member.type === "node";
+  }) as { lat: number; lon: number };
+  const cityGeoJson = osmtogeojson(cityOsm) as FeatureCollection;
 
   return (
     <MapContainer
-      center={[35.66667, 139.31583]}
-      zoom={13}
+      center={[node.lat, node.lon]}
+      zoom={config.zoom}
+      minZoom={10}
+      maxBounds={[
+        [bounds.minlat, bounds.minlon],
+        [bounds.maxlat, bounds.maxlon],
+      ]}
       style={{ height: "100vh" }}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {cityBoundary && <GeoJSON data={cityBoundary} />}
+      <GeoJSON
+        data={cityGeoJson.features[0]}
+        style={() => {
+          return { fillOpacity: 0 };
+        }}
+      />
     </MapContainer>
   );
 }
