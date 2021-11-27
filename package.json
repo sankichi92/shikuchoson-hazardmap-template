@@ -3,24 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.15.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.24",
-    "@types/leaflet": "^1.7.6",
-    "@types/node": "^12.20.37",
-    "@types/react": "^17.0.36",
-    "@types/react-dom": "^17.0.11",
     "axios": "^0.24.0",
     "axios-retry": "^3.2.4",
     "leaflet": "^1.7.1",
-    "node-fetch": "^3.1.0",
     "osmtogeojson": "^3.0.0-beta.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-leaflet": "^3.2.2",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.5.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -41,5 +30,17 @@
     "not dead",
     "not op_mini all"
   ],
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.0.3",
+    "@types/leaflet": "^1.7.6",
+    "@types/node": "^16.11.10",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "react-scripts": "^4.0.3",
+    "typescript": "^4.5.2"
+  },
   "homepage": "."
 }
