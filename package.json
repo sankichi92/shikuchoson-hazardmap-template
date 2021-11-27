@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "axios-retry": "^3.2.4",
+    "jsonc-parser": "^3.0.0",
     "leaflet": "^1.7.1",
     "osmtogeojson": "^3.0.0-beta.4",
     "react": "^17.0.2",
@@ -14,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prebuild": "node scripts/fetch-city-osm.js",
+    "prebuild": "node scripts/convert-config.js && node scripts/fetch-city-osm.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

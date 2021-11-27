@@ -3,7 +3,7 @@ const path = require("path");
 const { URLSearchParams } = require("url");
 const axios = require("axios").default;
 const axiosRetry = require("axios-retry");
-const config = require("../hazardmap-config.json");
+const config = require("../src/hazardmap-config.json");
 
 axiosRetry(axios, { retry: 5, retryDelay: axiosRetry.exponentialDelay });
 
