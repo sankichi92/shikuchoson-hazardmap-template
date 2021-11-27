@@ -9,9 +9,7 @@ export const CityBoundary = () => {
   return (
     <GeoJSON
       data={cityGeoJson.features[0]}
-      style={() => {
-        return { fillOpacity: 0 };
-      }}
+      style={{ fillOpacity: 0 }}
       attribution='<a href="http://osm.org/copyright">OpenStreetMap</a>'
     />
   );
