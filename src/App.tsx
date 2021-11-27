@@ -1,9 +1,8 @@
-import { FeatureCollection } from "geojson";
 import { LatLngBounds } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import osmtogeojson from "osmtogeojson";
-import { GeoJSON, LayersControl, MapContainer, TileLayer } from "react-leaflet";
+import { LayersControl, MapContainer, TileLayer } from "react-leaflet";
 import cityOsm from "./city-osm.json";
+import { CityBoundary } from "./components/CityBoundary";
 import config from "./hazardmap-config.json";
 
 function App() {
@@ -12,7 +11,6 @@ function App() {
     [bounds.minlat, bounds.minlon],
     [bounds.maxlat, bounds.maxlon]
   );
-  const cityGeoJson = osmtogeojson(cityOsm) as FeatureCollection;
 
   return (
     <MapContainer
@@ -26,15 +24,7 @@ function App() {
         url="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"
         attribution='<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>'
       />
-
-      <GeoJSON
-        data={cityGeoJson.features[0]}
-        style={() => {
-          return { fillOpacity: 0 };
-        }}
-        attribution='<a href="http://osm.org/copyright">OpenStreetMap</a>'
-      />
-
+      <CityBoundary />
       <LayersControl position="topright" collapsed={window.innerWidth < 1080}>
         {config.hazardmapPortalTiles.map((hazardmapPortalTile) => {
           return (
