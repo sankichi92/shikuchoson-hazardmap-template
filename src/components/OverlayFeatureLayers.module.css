@@ -1,0 +1,10 @@
+.featurePopupTitle {
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.featurePopupProperties {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
