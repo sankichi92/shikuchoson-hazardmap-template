@@ -1,14 +1,22 @@
 import { FeatureCollection } from "geojson";
 import osmtogeojson from "osmtogeojson";
 import { GeoJSON } from "react-leaflet";
-import cityOsm from "../city-osm.json";
 
-export function CityBoundary() {
-  const cityGeoJson = osmtogeojson(cityOsm) as FeatureCollection;
+type Props = {
+  cityOsm: any;
+};
+
+export function CityBoundary({ cityOsm }: Props) {
+  const cityGeoJSON = osmtogeojson(cityOsm) as FeatureCollection;
+  const boundaryFeature = cityGeoJSON.features.find((feature) =>
+    feature.id?.toString()?.startsWith("relation/")
+  );
+
+  if (!boundaryFeature) return null;
 
   return (
     <GeoJSON
-      data={cityGeoJson.features[0]}
+      data={boundaryFeature}
       style={{ fillOpacity: 0 }}
       attribution='<a href="http://osm.org/copyright">OpenStreetMap</a>'
     />

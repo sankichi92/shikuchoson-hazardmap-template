@@ -29,7 +29,7 @@ function App() {
         url="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"
         attribution='<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>'
       />
-      <CityBoundary />
+      <CityBoundary cityOsm={cityOsm} />
       <LayersControl position="topright" collapsed={window.innerWidth <= 768}>
         <OverlayTileLayers tiles={config.tiles} />
         <OverlayFeatureLayers
