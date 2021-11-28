@@ -20,6 +20,6 @@ files.forEach((file) => {
 });
 
 fs.writeFileSync(
-  path.join(__dirname, "../src/feature-collections.json"),
+  path.join(__dirname, "../src/generated/feature-collections.json"),
   JSON.stringify(res)
 );

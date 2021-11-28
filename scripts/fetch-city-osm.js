@@ -3,9 +3,9 @@ const path = require("path");
 const process = require("process");
 const axios = require("axios").default;
 const axiosRetry = require("axios-retry");
-const config = require("../src/hazardmap-config.json");
+const config = require("../src/generated/hazardmap-config.json");
 
-const outputPath = path.join(__dirname, "../src/city-osm.json");
+const outputPath = path.join(__dirname, "../src/generated/city-osm.json");
 
 const query = `[out:json][timeout:60];
 area
