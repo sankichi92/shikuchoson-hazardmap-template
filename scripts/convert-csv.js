@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
+const process = require("process");
 const csv2geojson = require("csv2geojson");
-const { abort } = require("process");
 
 const res = {};
 
@@ -11,7 +11,8 @@ files.forEach((file) => {
   const csv = fs.readFileSync(path.join(__dirname, `../csv/${file}`));
   csv2geojson.csv2geojson(csv.toString(), (err, data) => {
     if (err) {
-      abort(err);
+      console.error(err);
+      process.exit(1);
     } else {
       res[title] = data;
     }

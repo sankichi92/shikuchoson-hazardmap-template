@@ -1,10 +1,11 @@
 const fs = require("fs").promises;
 const path = require("path");
+const process = require("process");
 const axios = require("axios").default;
 const axiosRetry = require("axios-retry");
 const config = require("../src/hazardmap-config.json");
 
-axiosRetry(axios, { retry: 5, retryDelay: axiosRetry.exponentialDelay });
+const outputPath = path.join(__dirname, "../src/city-osm.json");
 
 const query = `[out:json][timeout:60];
 area
@@ -18,12 +19,19 @@ rel
   (area);
 out geom;`;
 
+axiosRetry(axios, { retry: 5, retryDelay: axiosRetry.exponentialDelay });
+
 (async () => {
   const response = await axios.get(`https://overpass-api.de/api/interpreter`, {
     params: { data: query },
   });
-  await fs.writeFile(
-    path.join(__dirname, "../src/city-osm.json"),
-    JSON.stringify(response.data)
-  );
+
+  if (response.data.elements.length === 0) {
+    console.error(
+      `OSM Relation is not found: ${config.prefecture} ${config.city}`
+    );
+    process.exit(1);
+  }
+
+  await fs.writeFile(outputPath, JSON.stringify(response.data));
 })();
