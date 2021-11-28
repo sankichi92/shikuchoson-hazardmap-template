@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 import { GeoJSON, LayersControl, MapContainer, TileLayer } from "react-leaflet";
 import cityOsm from "./city-osm.json";
 import { CityBoundary } from "./components/CityBoundary";
+import { OverlayTileLayers } from "./components/OverlayTileLayers";
 import features from "./features.json";
 import config from "./hazardmap-config.json";
 
@@ -28,21 +29,8 @@ function App() {
         attribution='<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>'
       />
       <CityBoundary />
-      <LayersControl position="topright" collapsed={window.innerWidth < 1080}>
-        {config.hazardmapPortalTiles.map((hazardmapPortalTile) => {
-          return (
-            <LayersControl.Overlay
-              key={hazardmapPortalTile.name}
-              name={hazardmapPortalTile.name}
-            >
-              <TileLayer
-                url={hazardmapPortalTile.url}
-                opacity={0.75}
-                attribution='<a href="https://disaportal.gsi.go.jp/hazardmap/copyright/opendata.html">ハザードマップポータルサイト</a>'
-              />
-            </LayersControl.Overlay>
-          );
-        })}
+      <LayersControl position="topright" collapsed={window.innerWidth <= 768}>
+        <OverlayTileLayers tiles={config.tiles} />
         {Object.entries(features).map(([name, geojson]) => {
           return (
             <LayersControl.Overlay key={name} name={name}>

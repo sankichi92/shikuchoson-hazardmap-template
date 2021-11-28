@@ -3,7 +3,7 @@ import osmtogeojson from "osmtogeojson";
 import { GeoJSON } from "react-leaflet";
 import cityOsm from "../city-osm.json";
 
-export const CityBoundary = () => {
+export function CityBoundary() {
   const cityGeoJson = osmtogeojson(cityOsm) as FeatureCollection;
 
   return (
@@ -13,4 +13,4 @@ export const CityBoundary = () => {
       attribution='<a href="http://osm.org/copyright">OpenStreetMap</a>'
     />
   );
-};
+}
