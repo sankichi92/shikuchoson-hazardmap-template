@@ -1,5 +1,7 @@
-import { FeatureCollection } from "geojson";
-import { LayersControl, GeoJSON } from "react-leaflet";
+import ReactDOMServer from "react-dom/server";
+import { Feature, FeatureCollection } from "geojson";
+import { GeoJSON, LayersControl } from "react-leaflet";
+import styles from "./OverlayFeatureLayers.module.css";
 
 type Props = {
   featureCollections: {
@@ -8,6 +10,24 @@ type Props = {
 };
 
 export function OverlayFeatureLayers({ featureCollections }: Props) {
+  const FeaturePopup = ({ feature }: { feature: Feature }) => {
+    return (
+      <>
+        <h3 className={styles.featurePopupTitle}>{feature.properties?.name}</h3>
+        <ul className={styles.featurePopupProperties}>
+          {feature.properties &&
+            Object.entries(feature.properties)
+              .filter(([key, _]) => key !== "name")
+              .map(([key, val]) => (
+                <li>
+                  <b>{key}</b>: {val}
+                </li>
+              ))}
+        </ul>
+      </>
+    );
+  };
+
   return (
     <>
       {Object.entries(featureCollections).map(([name, featureCollection]) => {
@@ -16,15 +36,12 @@ export function OverlayFeatureLayers({ featureCollections }: Props) {
             <GeoJSON
               data={featureCollection}
               onEachFeature={(feature, layer) => {
-                layer.bindPopup(`
-                  <h3 style="margin: 0 0 0.5rem; text-align: center;">${
-                    feature.properties.name
-                  }</h3>
-                  ${Object.entries(feature.properties)
-                    .filter(([key, _]) => key !== "name")
-                    .map(([key, val]) => `<b>${key}</b>: ${val}<br />`)
-                    .join("")}
-                `);
+                // https://stackoverflow.com/a/60686195
+                layer.bindPopup(
+                  ReactDOMServer.renderToString(
+                    <FeaturePopup feature={feature} />
+                  )
+                );
               }}
             />
           </LayersControl.Overlay>
