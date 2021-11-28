@@ -2,11 +2,12 @@ import { LatLngBounds } from "leaflet";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 import "leaflet/dist/leaflet.css";
-import { GeoJSON, LayersControl, MapContainer, TileLayer } from "react-leaflet";
+import { LayersControl, MapContainer, TileLayer } from "react-leaflet";
 import cityOsm from "./city-osm.json";
 import { CityBoundary } from "./components/CityBoundary";
+import { OverlayFeatureLayers } from "./components/OverlayFeatureLayers";
 import { OverlayTileLayers } from "./components/OverlayTileLayers";
-import features from "./features.json";
+import featureCollections from "./feature-collections.json";
 import config from "./hazardmap-config.json";
 
 function App() {
@@ -31,27 +32,10 @@ function App() {
       <CityBoundary />
       <LayersControl position="topright" collapsed={window.innerWidth <= 768}>
         <OverlayTileLayers tiles={config.tiles} />
-        {Object.entries(features).map(([name, geojson]) => {
-          return (
-            <LayersControl.Overlay key={name} name={name}>
-              <GeoJSON
-                // @ts-ignore
-                data={geojson}
-                onEachFeature={(feature, layer) => {
-                  layer.bindPopup(`
-                    <h3 style="margin: 0 0 0.5rem; text-align: center;">${
-                      feature.properties.name
-                    }</h3>
-                    ${Object.entries(feature.properties)
-                      .filter(([key, _]) => key !== "name")
-                      .map(([key, val]) => `<b>${key}</b>: ${val}<br />`)
-                      .join("")}
-                  `);
-                }}
-              />
-            </LayersControl.Overlay>
-          );
-        })}
+        <OverlayFeatureLayers
+          // @ts-ignore
+          featureCollections={featureCollections}
+        />
       </LayersControl>
     </MapContainer>
   );
