@@ -20,7 +20,8 @@
     "prebuild": "node scripts/convert-config.js && node scripts/fetch-city-osm.js && node scripts/convert-csv.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier src/*.{ts,tsx,css} --write"
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +43,7 @@
     "@types/node": "^16.11.10",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
+    "prettier": "^2.5.0",
     "react-scripts": "^4.0.3",
     "typescript": "^4.5.2"
   },
