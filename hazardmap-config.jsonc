@@ -1,4 +1,5 @@
 {
+  "prefecture": "東京都",
   "city": "八王子市",
   "hazardmapPortalTiles": [
     {
@@ -40,7 +41,7 @@
     {
       "name": "土砂災害警戒区域（地すべり）",
       "url": "https://disaportaldata.gsi.go.jp/raster/05_jisuberikeikaikuiki/{z}/{x}/{y}.png"
-    },
+    }
     // {
     //   "name": "土石流危険渓流",
     //   "url": "https://disaportaldata.gsi.go.jp/raster/05_dosekiryukikenkeiryu/{z}/{x}/{y}.png"
