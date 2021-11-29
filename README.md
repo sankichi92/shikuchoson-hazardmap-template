@@ -1,5 +1,15 @@
 # 市区町村ハザードマップテンプレート
 
+市区町村の Web ハザードマップを作成するためのテンプレート。
+
+## 背景
+
+
+
+## 使い方
+
+
+
 ## 開発について
 
 このプロジェクトは [Create React App](https://github.com/facebook/create-react-app) で作成されています。

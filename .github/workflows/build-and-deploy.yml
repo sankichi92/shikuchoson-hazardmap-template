@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main
+      - hachioji
 
 jobs:
   build-and-deploy:
