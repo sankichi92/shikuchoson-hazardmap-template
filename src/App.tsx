@@ -2,7 +2,12 @@ import { LatLngBounds } from "leaflet";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 import "leaflet/dist/leaflet.css";
-import { LayersControl, MapContainer, TileLayer } from "react-leaflet";
+import {
+  LayersControl,
+  MapContainer,
+  ScaleControl,
+  TileLayer,
+} from "react-leaflet";
 import { CityBoundary } from "./components/CityBoundary";
 import { OverlayFeatureLayers } from "./components/OverlayFeatureLayers";
 import { OverlayTileLayers } from "./components/OverlayTileLayers";
@@ -29,6 +34,7 @@ function App() {
         url="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"
         attribution='<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>'
       />
+      <ScaleControl position="bottomright" />
       <CityBoundary cityOsm={cityOsm} />
       <LayersControl position="topright" collapsed={window.innerWidth <= 768}>
         <OverlayTileLayers tiles={config.tiles} />
