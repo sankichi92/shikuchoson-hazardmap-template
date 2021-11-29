@@ -1,8 +1,8 @@
-import ReactDOMServer from "react-dom/server";
 import { Feature, FeatureCollection } from "geojson";
+import { Icon, Marker } from "leaflet";
+import ReactDOMServer from "react-dom/server";
 import { GeoJSON, LayersControl } from "react-leaflet";
 import styles from "./OverlayFeatureLayers.module.css";
-import L from "leaflet";
 
 type Props = {
   featureCollections: {
@@ -46,7 +46,7 @@ export function OverlayFeatureLayers({ featureCollections }: Props) {
       {Object.entries(featureCollections).map(
         ([name, featureCollection], i) => {
           const iconColor = iconColors[i % iconColors.length];
-          const icon = new L.Icon.Default({
+          const icon = new Icon.Default({
             iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${iconColor}.png`,
             iconRetinaUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${iconColor}.png`,
           });
@@ -56,7 +56,7 @@ export function OverlayFeatureLayers({ featureCollections }: Props) {
               <GeoJSON
                 data={featureCollection}
                 pointToLayer={(pointFeature, latlng) => {
-                  return L.marker(latlng, { icon: icon }).bindPopup(
+                  return new Marker(latlng, { icon: icon }).bindPopup(
                     // https://stackoverflow.com/a/60686195
                     ReactDOMServer.renderToString(
                       <FeaturePopup feature={pointFeature} />
