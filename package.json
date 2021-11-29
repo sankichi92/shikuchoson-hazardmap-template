@@ -1,5 +1,5 @@
 {
-  "name": "hshikuchoson-hazardmap-template",
+  "name": "shikuchoson-hazardmap-template",
   "private": true,
   "dependencies": {
     "leaflet": "^1.7.1",
