@@ -10,37 +10,37 @@ type Props = {
   };
 };
 
+const iconColors = [
+  "blue",
+  "gold",
+  "red",
+  "green",
+  "orange",
+  "yellow",
+  "violet",
+  "gray",
+  "black",
+];
+
+function FeaturePopup({ feature }: { feature: Feature }) {
+  return (
+    <>
+      <h3 className={styles.name}>{feature.properties?.name}</h3>
+      <ul className={styles.properties}>
+        {feature.properties &&
+          Object.entries(feature.properties)
+            .filter(([key, _]) => key !== "name")
+            .map(([key, val]) => (
+              <li>
+                <b>{key}</b>: {val}
+              </li>
+            ))}
+      </ul>
+    </>
+  );
+}
+
 export function OverlayFeatureLayers({ featureCollections }: Props) {
-  const iconColors = [
-    "blue",
-    "gold",
-    "red",
-    "green",
-    "orange",
-    "yellow",
-    "violet",
-    "gray",
-    "black",
-  ];
-
-  const FeaturePopup = ({ feature }: { feature: Feature }) => {
-    return (
-      <>
-        <h3 className={styles.featurePopupTitle}>{feature.properties?.name}</h3>
-        <ul className={styles.featurePopupProperties}>
-          {feature.properties &&
-            Object.entries(feature.properties)
-              .filter(([key, _]) => key !== "name")
-              .map(([key, val]) => (
-                <li>
-                  <b>{key}</b>: {val}
-                </li>
-              ))}
-        </ul>
-      </>
-    );
-  };
-
   return (
     <>
       {Object.entries(featureCollections).map(
