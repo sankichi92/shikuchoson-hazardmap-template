@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+import { Button, Card, Collapse } from "react-bootstrap";
 
 type Props = {
   imageNames: string[];
+  collapsed: boolean;
 };
 
-export function BottomLeftImages({ imageNames }: Props) {
+export function BottomLeftImages({ imageNames, collapsed }: Props) {
   const [images, setImages] = useState<{ title: string; src: string }[]>([]);
+  const [open, setOpen] = useState(!collapsed);
 
   useEffect(() => {
     (async () => {
@@ -23,9 +26,33 @@ export function BottomLeftImages({ imageNames }: Props) {
   return (
     <div className="leaflet-bottom leaflet-left">
       <div className="leaflet-control">
-        {images.map(({ title, src }) => (
-          <img key={title} src={src} alt={title} />
-        ))}
+        <Button
+          variant="light"
+          onClick={() => setOpen(!open)}
+          aria-controls="collapse-images"
+          aria-expanded={open}
+          className="mb-1"
+        >
+          {open ? "説明を隠す" : "説明を表示"}
+        </Button>
+        <Collapse in={open}>
+          <div id="collapse-images">
+            <div className="d-flex align-items-start flex-wrap">
+              {images.map(({ title, src }) => (
+                <Card
+                  key={title}
+                  className="shadow opacity-75 me-1 mb-1"
+                  style={{ width: "12rem" }}
+                >
+                  <Card.Header as="h2" className="h6 text-center">
+                    {title}
+                  </Card.Header>
+                  <Card.Img variant="bottom" src={src} />
+                </Card>
+              ))}
+            </div>
+          </div>
+        </Collapse>
       </div>
     </div>
   );

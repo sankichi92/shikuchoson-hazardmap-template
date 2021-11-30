@@ -18,6 +18,8 @@ import featureCollections from "./generated/feature-collections.json";
 import config from "./generated/hazardmap-config.json";
 import imageNames from "./generated/image-names.json";
 
+const breakpoint = 768;
+
 function App() {
   const bounds = cityOsm.elements[0].bounds;
   const latLngBounds = new LatLngBounds(
@@ -44,14 +46,20 @@ function App() {
         />
         <ScaleControl position="bottomright" />
         <CityBoundary cityOsm={cityOsm} />
-        <LayersControl position="topright" collapsed={window.innerWidth <= 768}>
+        <LayersControl
+          position="topright"
+          collapsed={window.innerWidth <= breakpoint}
+        >
           <OverlayTileLayers tiles={config.tiles} />
           <OverlayFeatureLayers
             // @ts-ignore
             featureCollections={featureCollections}
           />
         </LayersControl>
-        <BottomLeftImages imageNames={imageNames} />
+        <BottomLeftImages
+          imageNames={imageNames}
+          collapsed={window.innerWidth <= breakpoint}
+        />
       </MapContainer>
     </>
   );
