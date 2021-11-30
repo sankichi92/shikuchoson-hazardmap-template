@@ -9,12 +9,14 @@ import {
   ScaleControl,
   TileLayer,
 } from "react-leaflet";
+import { BottomLeftImages } from "./components/BottomLeftImages";
 import { CityBoundary } from "./components/CityBoundary";
 import { OverlayFeatureLayers } from "./components/OverlayFeatureLayers";
 import { OverlayTileLayers } from "./components/OverlayTileLayers";
 import cityOsm from "./generated/city-osm.json";
 import featureCollections from "./generated/feature-collections.json";
 import config from "./generated/hazardmap-config.json";
+import imageNames from "./generated/image-names.json";
 
 function App() {
   const bounds = cityOsm.elements[0].bounds;
@@ -49,6 +51,7 @@ function App() {
             featureCollections={featureCollections}
           />
         </LayersControl>
+        <BottomLeftImages imageNames={imageNames} />
       </MapContainer>
     </>
   );
