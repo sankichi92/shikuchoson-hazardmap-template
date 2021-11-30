@@ -2,7 +2,6 @@ import { Feature, FeatureCollection } from "geojson";
 import { Icon, Marker } from "leaflet";
 import ReactDOMServer from "react-dom/server";
 import { GeoJSON, LayersControl } from "react-leaflet";
-import styles from "./OverlayFeatureLayers.module.css";
 
 type Props = {
   featureCollections: {
@@ -25,8 +24,8 @@ const iconColors = [
 function FeaturePopup({ feature }: { feature: Feature }) {
   return (
     <>
-      <h3 className={styles.name}>{feature.properties?.name}</h3>
-      <ul className={styles.properties}>
+      <h2 className="h6 text-center">{feature.properties?.name}</h2>
+      <ul className="list-unstyled">
         {feature.properties &&
           Object.entries(feature.properties)
             .filter(([key, _]) => key !== "name")

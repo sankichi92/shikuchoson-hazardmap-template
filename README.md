@@ -64,6 +64,10 @@ CSV ファイルは必ず `name`（名前）、`lat`（緯度）、`lon`（経�
 
 [`01-サンプル.csv`](./csv/01-サンプル.csv) を参考にしてください。
 
+### 画像をアップロードして地図の左下に表示する
+
+CSV 同様、[`images`](./images) 以下に画像をアップロードすれば、地図の左下に表示されるようになります。
+
 ## 開発について
 
 このプロジェクトは [Create React App](https://github.com/facebook/create-react-app) で作成されています。
