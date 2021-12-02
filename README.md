@@ -3,6 +3,10 @@
 市区町村の Web ハザードマップを作成するためのテンプレート。\
 [Tokyo OSS Party!!](https://tokyo-oss-party.com/) 2021 の成果物です。
 
+## 利用例
+
+- [八王子市](https://sankichi.net/hachioji-hazardmap/) ([sankichi92/hachioji-hazardmap](https://github.com/sankichi92/hachioji-hazardmap))
+
 ## 背景と課題
 
 国土交通省の管理する[ハザードマップポータルサイト](https://disaportal.gsi.go.jp/)では、以下の2つのサービスが提供されています。
