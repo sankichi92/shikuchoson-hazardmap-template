@@ -25,10 +25,14 @@
 
 shikuchoson-hazardmap-template (市区町村ハザードマップテンプレート)
 
+### スクリーンショット
+
+![スクリーンショット](https://raw.githubusercontent.com/sankichi92/shikuchoson-hazardmap-template/main/docs/screenshot.png)
+
 ### URL
 
-- GitHub: https://github.com/sankichi92/shikuchoson-hazardmap-template
-- テンプレートの利用例: https://sankichi.net/hachioji-hazardmap/
+- GitHub repo: **https://github.com/sankichi92/shikuchoson-hazardmap-template**
+- テンプレートの利用例: **https://sankichi.net/hachioji-hazardmap/**
 
 ### 背景と課題
 
@@ -47,7 +51,7 @@ shikuchoson-hazardmap-template (市区町村ハザードマップテンプレー
 そうした情報を確認するには、「わがまちハザードマップ」から市区町村のハザードマップを確認する必要があります。
 
 しかし、市区町村の作成するハザードマップの多くが紙での配布を前提としており、重ねるハザードマップとちがって Web に最適化されていません。
-そしておそらく、市区町村ごとに個別の Web ハザードマップまで開発・運用するような予算も余力もないでしょう。
+そしておそらく、個別の Web ハザードマップを開発・運用できるほど、予算やリソースに余裕のある市区町村は少ないでしょう。
 
 この課題に対し、本サービスは、市区町村の単位で Web ハザードマップを容易に作成・カスタマイズできるテンプレートを提供します。
 合わせて、テンプレートに GitHub を活用することで、GitHub Pages による公開、Pull Request による市民参加も可能とします。
@@ -66,7 +70,7 @@ shikuchoson-hazardmap-template (市区町村ハザードマップテンプレー
 ### 利用したデータ
 
 - [地理院タイル](https://maps.gsi.go.jp/development/ichiran.html)
-- [Open Street Map](https://www.openstreetmap.org/)（API で市区町村の行政界を得るため）
+- [OpenStreetMap](https://www.openstreetmap.org/)（API で市区町村の行政界を得るため）
 - [ハザードマップポータルサイトの配信データ](https://disaportal.gsi.go.jp/hazardmap/copyright/opendata.html)
 - 八王子市提供データ
 
