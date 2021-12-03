@@ -101,7 +101,7 @@ CSV 同様、[`images`](./images) 以下に画像をアップロードすれば�
 ### `npm run prebuild`
 
 `hazardmap-config.jsonc` や `csv`, `images` ディレクトリの内容をもとに、`src/generated` 以下のファイルを更新します。\
-当該ファイル、ディレクトリに変更の変更を反映するには、`npm start` の前に一度このコマンドを実行してください。
+当該ファイル、ディレクトリの変更を反映するには、`npm start` の前に一度このコマンドを実行してください。
 
 ### `npm run format`
 
