@@ -30,7 +30,9 @@
 
 ## 使い方
 
-### テンプレートを使用して GitHub リポジトリを作成する
+### ハザードマップの作成・公開
+
+#### 1. テンプレートを使用して GitHub リポジトリを作成する
 
 1. 上部（あるいはこちら）の「[Use this template](https://github.com/sankichi92/shikuchoson-hazardmap-template/generate)」ボタンを押す
 2. Repository name を入力（例: `hachioji-hazardmap`）し、「Create repository from template」ボタンを押す
@@ -38,7 +40,7 @@
 
 詳細: https://docs.github.com/ja/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
 
-### `hazardmap-config.jsonc` を対象の市区町村向けに更新する
+#### 2. `hazardmap-config.jsonc` を対象の市区町村向けに更新する
 
 1. 作成したリポジトリの [`hazardmap-config.jsonc`](./hazardmap-config.jsonc) をクリックして開く
 2. ファイル右上の鉛筆✏️ボタンをクリックして編集画面を開く
@@ -48,7 +50,7 @@
 
 詳細: https://docs.github.com/ja/repositories/working-with-files/managing-files/editing-files#editing-files-in-your-repository
 
-### 作成したリポジトリの設定で GitHub Pages を有効化して Web ページを公開する
+#### 3. 作成したリポジトリの設定で GitHub Pages を有効化して Web ページを公開する
 
 1. 上部タブ「Settings」→サイドバー「Pages」から GitHub Pages の設定画面へ移動する
 2. Source に「`gh-pages`」を選択して「Save」ボタンを押す
@@ -56,7 +58,9 @@
 
 詳細: https://docs.github.com/ja/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
-### CSV ファイルをアップロードしてカスタムレイヤを追加する
+### ハザードマップのカスタマイズ
+
+#### CSV ファイルをアップロードしてカスタムレイヤを追加する
 
 1. 作成したリポジトリの [`csv`](./csv) をクリックして内容を表示する
 2. 「Add files」→「Upload files」から CSV ファイルをアップロード、変更内容に名前をつけて「Commit changes」ボタンを押す
@@ -64,7 +68,7 @@
 
 詳細: https://docs.github.com/ja/repositories/working-with-files/managing-files/adding-a-file-to-a-repository
 
-#### CSV のフォーマットについて
+##### CSV のフォーマットについて
 
 CSV ファイルは必ず `name`（名前）、`lat`（緯度）、`lon`（経度）のカラム（列）を持つ必要があります。
 さらに、これらのカラム以外も追加でき、地図上のアイコンをクリックしたときに合わせて表示されます。
@@ -72,7 +76,7 @@ CSV ファイルは必ず `name`（名前）、`lat`（緯度）、`lon`（経�
 
 [`01-サンプル.csv`](./csv/01-サンプル.csv) を参考にしてください。
 
-### 画像をアップロードして地図の左下に表示する
+#### 画像をアップロードして地図の左下に表示する
 
 CSV 同様、[`images`](./images) 以下に画像をアップロードすれば、地図の左下に表示されるようになります。
 
