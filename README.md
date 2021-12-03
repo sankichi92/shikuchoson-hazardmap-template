@@ -1,7 +1,9 @@
 # 市区町村ハザードマップテンプレート
 
-市区町村の Web ハザードマップを作成するためのテンプレート。\
-[Tokyo OSS Party!!](https://tokyo-oss-party.com/) 2021 の成果物です。
+市区町村の Web ハザードマップを作成するためのテンプレート。
+
+[Tokyo OSS Party!!](https://tokyo-oss-party.com/) 2021 の成果物です。\
+発表資料は https://speakerdeck.com/sankichi92/shikuchoson-hazardmap-template
 
 ## 利用例
 
