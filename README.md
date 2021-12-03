@@ -30,6 +30,8 @@
 
 ## 使い方
 
+動画で見る: https://youtu.be/oc1CfaVSlno
+
 ### ハザードマップの作成・公開
 
 #### 1. テンプレートを使用して GitHub リポジトリを作成する
@@ -44,9 +46,8 @@
 
 1. 作成したリポジトリの [`hazardmap-config.jsonc`](./hazardmap-config.jsonc) をクリックして開く
 2. ファイル右上の鉛筆✏️ボタンをクリックして編集画面を開く
-3. `prefecture` と `city` の値をハザードマップを作成する都道府県・市区町村に変更する
+3. `prefecture` と `city` の値をハザードマップを作成する都道府県・市区町村に変更して「Commit changes」ボタンを押す
    - 合わせて、不要な `tiles` の要素（`{}` で囲まれる単位）も消してください。たとえば、内陸であれば「高潮浸水想定区域」は不要でしょう
-4. 変更内容に名前（コミットメッセージ）をつけて「Commit changes」ボタンを押す
 
 詳細: https://docs.github.com/ja/repositories/working-with-files/managing-files/editing-files#editing-files-in-your-repository
 
@@ -63,7 +64,7 @@
 #### CSV ファイルをアップロードしてカスタムレイヤを追加する
 
 1. 作成したリポジトリの [`csv`](./csv) をクリックして内容を表示する
-2. 「Add files」→「Upload files」から CSV ファイルをアップロード、変更内容に名前をつけて「Commit changes」ボタンを押す
+2. 「Add files」→「Upload files」から CSV ファイルをアップロード、「Commit changes」ボタンを押す
 3. [`01-サンプル.csv`](./csv/01-サンプル.csv) を表示し、右上のゴミ箱🗑ボタンからファイルを削除する
 
 詳細: https://docs.github.com/ja/repositories/working-with-files/managing-files/adding-a-file-to-a-repository

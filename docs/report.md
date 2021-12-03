@@ -88,8 +88,11 @@ shikuchoson-hazardmap-template (市区町村ハザードマップテンプレー
 - `csv` ディレクトリ以下に特定のフォーマットの CSV ファイルをアップロードしてレイヤ（Point Features）を追加
 - `images` ディレクトリ以下に画像をアップロードして地図上に表示
 
-使い方の詳細は README https://github.com/sankichi92/shikuchoson-hazardmap-template#使い方 を参照してください。
-（将来的には、Line や Polygon Features、ラスタタイルのレイヤ追加等のカスタマイズも視野にあります。）
+使い方の詳細は README https://github.com/sankichi92/shikuchoson-hazardmap-template#使い方 や以下のデモ動画を参照してください。
+
+{%youtube oc1CfaVSlno %}
+
+将来的には、他の種類のレイヤ追加等のカスタマイズも視野にあります。
 
 ### 課題と解決に関わるステークホルダーとその役割
 
