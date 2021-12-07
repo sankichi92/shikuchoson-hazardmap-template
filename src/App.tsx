@@ -1,4 +1,6 @@
 import { Icon, LatLngBounds, Marker } from "leaflet";
+import "leaflet-defaulticon-compatibility";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 import "leaflet/dist/leaflet.css";
 import ReactDOMServer from "react-dom/server";
 import { Helmet } from "react-helmet";
@@ -7,7 +9,7 @@ import {
   LayersControl,
   Map,
   ScaleControl,
-  TileLayer,
+  TileLayer
 } from "react-leaflet";
 import { BottomLeftImages } from "./components/BottomLeftImages";
 import { CityBoundary } from "./components/CityBoundary";
