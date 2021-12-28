@@ -2,11 +2,9 @@
 
 市区町村の Web ハザードマップを作成するためのテンプレート。
 
-[Tokyo OSS Party!!](https://tokyo-oss-party.com/) 2021 の成果物です。\
-発表資料は https://speakerdeck.com/sankichi92/shikuchoson-hazardmap-template
+[Tokyo OSS Party!!](https://tokyo-oss-party.com/) 2021 の成果物です（[発表資料](https://speakerdeck.com/sankichi92/shikuchoson-hazardmap-template)）。
 
-利用例は [Wiki](https://github.com/sankichi92/shikuchoson-hazardmap-template/wiki) を参照してください。\
-また、このテンプレートを使用してハザードマップを作成した場合は、ぜひこちらの利用例への追加をお願いします。
+[利用例はこちら](https://github.com/sankichi92/shikuchoson-hazardmap-template/wiki)
 
 ## 背景と課題
 
@@ -88,6 +86,8 @@ CSV 同様、[`images`](./images) 以下に画像をアップロードすれば�
 
 ### セットアップ
 
+事前に [Node.js](https://nodejs.org/) をインストールしてください。
+
     $ git clone https://github.com/sankichi92/shikuchoson-hazardmap-template.git
     $ cd shikuchoson-hazardmap-template
     $ npm install
@@ -95,8 +95,6 @@ CSV 同様、[`images`](./images) 以下に画像をアップロードすれば�
 ### 設定ファイル等からコードを自動生成する
 
     $ npm run prebuild
-
-設定ファイルや `csv`, `images` ディレクトリの変更を反映するには上記を実行してください。
 
 ### 開発用サーバを起動する
 
