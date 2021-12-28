@@ -5,9 +5,8 @@
 [Tokyo OSS Party!!](https://tokyo-oss-party.com/) 2021 の成果物です。\
 発表資料は https://speakerdeck.com/sankichi92/shikuchoson-hazardmap-template
 
-## 利用例
-
-- [八王子市](https://sankichi.net/hachioji-hazardmap/) ([sankichi92/hachioji-hazardmap](https://github.com/sankichi92/hachioji-hazardmap))
+利用例は [Wiki](https://github.com/sankichi92/shikuchoson-hazardmap-template/wiki) を参照してください。\
+また、このテンプレートを使用してハザードマップを作成した場合は、ぜひこちらの利用例への追加をお願いします。
 
 ## 背景と課題
 
@@ -87,26 +86,28 @@ CSV 同様、[`images`](./images) 以下に画像をアップロードすれば�
 
 このプロジェクトは [Create React App](https://github.com/facebook/create-react-app) で作成されています。
 
-以下のコマンドが使用可能です。
+### セットアップ
 
-### `npm start`
+    $ git clone https://github.com/sankichi92/shikuchoson-hazardmap-template.git
+    $ cd shikuchoson-hazardmap-template
+    $ npm install
 
-開発モードでアプリを起動します。\
-ブラウザで見るには [http://localhost:3000](http://localhost:3000) を開いてください。
+### 設定ファイル等からコードを自動生成する
 
-コードを変更するたび、ページも更新されます。\
-また、コンソールで lint エラーも確認できます。
+    $ npm run prebuild
 
-### `npm run build`
+設定ファイルや `csv`, `images` ディレクトリの変更を反映するには上記を実行してください。
 
-本番向けのアプリをビルドし、`build` フォルダに配置します。
+### 開発用サーバを起動する
 
-### `npm run prebuild`
+    $ npm start
 
-`hazardmap-config.jsonc` や `csv`, `images` ディレクトリの内容をもとに、`src/generated` 以下のファイルを更新します。\
-当該ファイル、ディレクトリの変更を反映するには、`npm start` の前に一度このコマンドを実行してください。
+上記を実行すると [http://localhost:3000](http://localhost:3000) で確認できます。
 
-### `npm run format`
+### 本番向けのアプリケーションコードを `build` 以下に生成する
 
-`src` 以下のコードを整形します。\
-フォーマッタには [Prettier](https://prettier.io/) を使用しています。
+    $ npm run build
+
+### コードを整形する
+
+    $ npm run format
