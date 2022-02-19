@@ -15,7 +15,6 @@ rel
   [name="${config.city}"]
   [type="boundary"]
   [boundary="administrative"]
-  [admin_level="7"]
   (area);
 out geom;`;
 
