@@ -1,3 +1,7 @@
+#! /usr/bin/env node
+
+// /csv 以下の CSV ファイルを GeoJSON に変換し、/src/generated に書き出す。
+
 const fs = require("fs");
 const path = require("path");
 const process = require("process");
@@ -21,6 +25,7 @@ files.sort().forEach((file) => {
 });
 
 fs.writeFileSync(
-  path.join(__dirname, "../src/generated/feature-collections.json"),
+  path.join(__dirname, "../src/generated/csv-feature-collections.json"),
   JSON.stringify(res)
 );
+console.log("Generated /src/generated/csv-feature-collections.json")

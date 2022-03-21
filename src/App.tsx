@@ -14,7 +14,7 @@ import { CityBoundary } from "./components/CityBoundary";
 import { OverlayFeatureLayers } from "./components/OverlayFeatureLayers";
 import { OverlayTileLayers } from "./components/OverlayTileLayers";
 import cityOsm from "./generated/city-osm.json";
-import featureCollections from "./generated/feature-collections.json";
+import csvFeatureCollections from "./generated/csv-feature-collections.json";
 import config from "./generated/hazardmap-config.json";
 import imageNames from "./generated/image-names.json";
 
@@ -53,7 +53,7 @@ function App() {
           <OverlayTileLayers tiles={config.tiles} />
           <OverlayFeatureLayers
             // @ts-ignore
-            featureCollections={featureCollections}
+            featureCollections={csvFeatureCollections}
           />
         </LayersControl>
         <BottomLeftImages

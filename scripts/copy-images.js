@@ -1,3 +1,7 @@
+#! /usr/bin/env node
+
+// /images 以下のファイルを /src 以下の JavaScript (TypeScript) で import できるように /src/images にコピーする。
+
 const fs = require("fs");
 const path = require("path");
 
@@ -13,8 +17,10 @@ files.sort().forEach((file) => {
     path.join(__dirname, `../src/images/${name}`)
   );
 });
+console.log("Copied /images/* to /src/images/*")
 
 fs.writeFileSync(
   path.join(__dirname, "../src/generated/image-names.json"),
   JSON.stringify(names)
 );
+console.log("Generated /src/generated/image-names.json")

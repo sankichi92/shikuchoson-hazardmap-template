@@ -92,10 +92,6 @@ CSV 同様、[`images`](./images) 以下に画像をアップロードすれば�
     $ cd shikuchoson-hazardmap-template
     $ npm install
 
-### 設定ファイル等からコードを自動生成する
-
-    $ npm run prebuild
-
 ### 開発用サーバを起動する
 
     $ npm start
