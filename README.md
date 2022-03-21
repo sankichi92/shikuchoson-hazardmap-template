@@ -105,7 +105,3 @@ CSV 同様、[`images`](./images) 以下に画像をアップロードすれば�
 ### 本番向けのアプリケーションコードを `build` 以下に生成する
 
     $ npm run build
-
-### コードを整形する
-
-    $ npm run format
