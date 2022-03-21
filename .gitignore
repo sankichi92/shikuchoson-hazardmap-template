@@ -22,5 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+/src/generated/*
+!/src/generated/.keep
+
 /src/images/*
 !/src/images/.keep
