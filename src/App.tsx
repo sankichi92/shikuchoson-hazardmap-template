@@ -4,38 +4,37 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet/dist/leaflet.css";
 import { Helmet } from "react-helmet";
 import {
+  GeoJSON,
   LayersControl,
   MapContainer,
   ScaleControl,
   TileLayer,
 } from "react-leaflet";
 import { BottomLeftImages } from "./components/BottomLeftImages";
-import { CityBoundary } from "./components/CityBoundary";
 import { OverlayFeatureLayers } from "./components/OverlayFeatureLayers";
 import { OverlayTileLayers } from "./components/OverlayTileLayers";
-import cityOsm from "./generated/city-osm.json";
 import csvFeatureCollections from "./generated/csv-feature-collections.json";
 import config from "./generated/hazardmap-config.json";
 import imageNames from "./generated/image-names.json";
+import shikuchosonBoundary from "./generated/shikuchoson-boundary.json";
 
 const breakpoint = 768;
 
 function App() {
-  const bounds = cityOsm.elements[0].bounds;
-  const latLngBounds = new LatLngBounds(
-    [bounds.minlat, bounds.minlon],
-    [bounds.maxlat, bounds.maxlon]
+  const bounds = new LatLngBounds(
+    [shikuchosonBoundary.bbox[1], shikuchosonBoundary.bbox[0]],
+    [shikuchosonBoundary.bbox[3], shikuchosonBoundary.bbox[2]]
   );
 
   return (
     <>
       <Helmet>
-        <title>{config.city}ハザードマップ</title>
+        <title>{config.shikuchoson}ハザードマップ</title>
       </Helmet>
 
       <MapContainer
-        bounds={latLngBounds}
-        maxBounds={latLngBounds}
+        bounds={bounds}
+        maxBounds={bounds}
         minZoom={5}
         maxZoom={17}
         style={{ height: "100vh" }}
@@ -44,8 +43,15 @@ function App() {
           url="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"
           attribution='<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>'
         />
+
         <ScaleControl position="bottomright" />
-        <CityBoundary cityOsm={cityOsm} />
+
+        <GeoJSON
+          // @ts-ignore
+          data={shikuchosonBoundary.geometry}
+          style={{ fillOpacity: 0 }}
+        />
+
         <LayersControl
           position="topright"
           collapsed={window.innerWidth <= breakpoint}
