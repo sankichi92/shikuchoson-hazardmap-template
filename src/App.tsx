@@ -1,4 +1,3 @@
-import { LatLngBounds } from "leaflet";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 import "leaflet/dist/leaflet.css";
@@ -21,10 +20,10 @@ import shikuchosonBoundary from "./generated/shikuchoson-boundary.json";
 const breakpoint = 768;
 
 function App() {
-  const bounds = new LatLngBounds(
+  const bounds: [number, number][] = [
     [shikuchosonBoundary.bbox[1], shikuchosonBoundary.bbox[0]],
-    [shikuchosonBoundary.bbox[3], shikuchosonBoundary.bbox[2]]
-  );
+    [shikuchosonBoundary.bbox[3], shikuchosonBoundary.bbox[2]],
+  ];
 
   return (
     <>
@@ -36,7 +35,6 @@ function App() {
         bounds={bounds}
         maxBounds={bounds}
         minZoom={5}
-        maxZoom={17}
         style={{ height: "100vh" }}
       >
         <TileLayer
@@ -57,11 +55,13 @@ function App() {
           collapsed={window.innerWidth <= breakpoint}
         >
           <OverlayTileLayers tiles={config.tiles} />
+
           <OverlayFeatureLayers
             // @ts-ignore
             featureCollections={csvFeatureCollections}
           />
         </LayersControl>
+
         <BottomLeftImages
           imageNames={imageNames}
           collapsed={window.innerWidth <= breakpoint}
