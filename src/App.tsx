@@ -3,6 +3,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet/dist/leaflet.css";
 import { Helmet } from "react-helmet";
 import {
+  AttributionControl,
   GeoJSON,
   LayersControl,
   MapContainer,
@@ -35,14 +36,17 @@ function App() {
         bounds={bounds}
         maxBounds={bounds}
         minZoom={5}
+        attributionControl={false}
         style={{ height: "100vh" }}
       >
+        <AttributionControl prefix={false} />
+
+        <ScaleControl position="bottomright" />
+        
         <TileLayer
           url="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"
           attribution='<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>'
         />
-
-        <ScaleControl position="bottomright" />
 
         <GeoJSON
           // @ts-ignore
