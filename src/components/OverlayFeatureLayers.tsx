@@ -2,6 +2,7 @@ import { Feature, FeatureCollection } from "geojson";
 import { Icon, Marker } from "leaflet";
 import ReactDOMServer from "react-dom/server";
 import { GeoJSON, LayersControl } from "react-leaflet";
+import Linkify from "react-linkify";
 
 type Props = {
   featureCollections: {
@@ -29,8 +30,8 @@ const FeaturePopup = ({ feature }: { feature: Feature }) => (
         Object.entries(feature.properties)
           .filter(([key, _]) => key !== "name")
           .map(([key, val]) => (
-            <li>
-              <b>{key}</b>: {val}
+            <li key={key}>
+              <b>{key}</b>: <Linkify>{val}</Linkify>
             </li>
           ))}
     </ul>
