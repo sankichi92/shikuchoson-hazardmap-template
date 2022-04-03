@@ -12,8 +12,8 @@ const config = require("../src/generated/hazardmap-config.json");
   );
   const property = propertiesResponse.data.find(
     (property) =>
-      property["都道府県"] == config.prefecture &&
-      property["市区町村"] == config.shikuchoson
+      property["都道府県"] === config.prefecture &&
+      property["市区町村"] === config.shikuchoson
   );
 
   if (!property || !property["行政区域コード"]) {
