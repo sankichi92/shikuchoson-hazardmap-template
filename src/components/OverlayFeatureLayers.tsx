@@ -21,52 +21,46 @@ const iconColors = [
   "black",
 ];
 
-function FeaturePopup({ feature }: { feature: Feature }) {
-  return (
-    <>
-      <h2 className="h6 text-center">{feature.properties?.name}</h2>
-      <ul className="list-unstyled">
-        {feature.properties &&
-          Object.entries(feature.properties)
-            .filter(([key, _]) => key !== "name")
-            .map(([key, val]) => (
-              <li>
-                <b>{key}</b>: {val}
-              </li>
-            ))}
-      </ul>
-    </>
-  );
-}
+const FeaturePopup = ({ feature }: { feature: Feature }) => (
+  <>
+    <h6 className="text-center">{feature.properties?.name}</h6>
+    <ul className="list-unstyled">
+      {feature.properties &&
+        Object.entries(feature.properties)
+          .filter(([key, _]) => key !== "name")
+          .map(([key, val]) => (
+            <li>
+              <b>{key}</b>: {val}
+            </li>
+          ))}
+    </ul>
+  </>
+);
 
-export function OverlayFeatureLayers({ featureCollections }: Props) {
-  return (
-    <>
-      {Object.entries(featureCollections).map(
-        ([name, featureCollection], i) => {
-          const iconColor = iconColors[i % iconColors.length];
-          const icon = new Icon.Default({
-            iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${iconColor}.png`,
-            iconRetinaUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${iconColor}.png`,
-          });
+export const OverlayFeatureLayers = ({ featureCollections }: Props) => (
+  <>
+    {Object.entries(featureCollections).map(([name, featureCollection], i) => {
+      const iconColor = iconColors[i % iconColors.length];
+      const icon = new Icon.Default({
+        iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${iconColor}.png`,
+        iconRetinaUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-${iconColor}.png`,
+      });
 
-          return (
-            <LayersControl.Overlay key={name} name={name}>
-              <GeoJSON
-                data={featureCollection}
-                pointToLayer={(pointFeature, latlng) => {
-                  return new Marker(latlng, { icon: icon }).bindPopup(
-                    // https://stackoverflow.com/a/60686195
-                    ReactDOMServer.renderToString(
-                      <FeaturePopup feature={pointFeature} />
-                    )
-                  );
-                }}
-              />
-            </LayersControl.Overlay>
-          );
-        }
-      )}
-    </>
-  );
-}
+      return (
+        <LayersControl.Overlay key={name} name={name}>
+          <GeoJSON
+            data={featureCollection}
+            pointToLayer={(pointFeature, latlng) => {
+              return new Marker(latlng, { icon: icon }).bindPopup(
+                // https://stackoverflow.com/a/60686195
+                ReactDOMServer.renderToString(
+                  <FeaturePopup feature={pointFeature} />
+                )
+              );
+            }}
+          />
+        </LayersControl.Overlay>
+      );
+    })}
+  </>
+);

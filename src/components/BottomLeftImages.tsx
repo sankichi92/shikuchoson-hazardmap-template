@@ -6,7 +6,7 @@ type Props = {
   collapsed: boolean;
 };
 
-export function BottomLeftImages({ imageNames, collapsed }: Props) {
+export const BottomLeftImages = ({ imageNames, collapsed }: Props) => {
   const [images, setImages] = useState<{ title: string; src: string }[]>([]);
   const [open, setOpen] = useState(!collapsed);
 
@@ -44,7 +44,7 @@ export function BottomLeftImages({ imageNames, collapsed }: Props) {
                   className="shadow opacity-75 me-1 mb-1"
                   style={{ width: "12rem" }}
                 >
-                  <Card.Header as="h2" className="h6 text-center">
+                  <Card.Header as="h6" className="text-center">
                     {title}
                   </Card.Header>
                   <Card.Img variant="bottom" src={src} />
@@ -56,4 +56,4 @@ export function BottomLeftImages({ imageNames, collapsed }: Props) {
       </div>
     </div>
   );
-}
+};
