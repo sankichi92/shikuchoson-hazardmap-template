@@ -19,7 +19,8 @@
     {
       "name": "洪水浸水想定区域（想定最大規模）",
       "url": "https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_data/{z}/{x}/{y}.png",
-      "attribution": "<a href=\"https://disaportal.gsi.go.jp/hazardmap/copyright/opendata.html\">ハザードマップポータルサイト</a>"
+      "attribution": "<a href=\"https://disaportal.gsi.go.jp/hazardmap/copyright/opendata.html\">ハザードマップポータルサイト</a>",
+      "checked": true
     },
     {
       "name": "洪水浸水想定区域（計画規模）",

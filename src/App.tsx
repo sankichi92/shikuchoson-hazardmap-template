@@ -12,7 +12,6 @@ import {
 } from "react-leaflet";
 import { BottomLeftImages } from "./components/BottomLeftImages";
 import { OverlayFeatureLayers } from "./components/OverlayFeatureLayers";
-import { OverlayTileLayers } from "./components/OverlayTileLayers";
 import csvFeatureCollections from "./generated/csv-feature-collections.json";
 import config from "./generated/hazardmap-config.json";
 import imageNames from "./generated/image-names.json";
@@ -36,13 +35,14 @@ function App() {
         bounds={bounds}
         maxBounds={bounds}
         minZoom={5}
+        maxZoom={17}
         attributionControl={false}
         style={{ height: "100vh" }}
       >
         <AttributionControl prefix={false} />
 
         <ScaleControl position="bottomright" />
-        
+
         <TileLayer
           url="https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"
           attribution='<a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>'
@@ -58,7 +58,20 @@ function App() {
           position="topright"
           collapsed={window.innerWidth <= breakpoint}
         >
-          <OverlayTileLayers tiles={config.tiles} />
+          {config.tiles.map((tile) => (
+            <LayersControl.Overlay
+              key={tile.name}
+              name={tile.name}
+              checked={tile.checked}
+            >
+              <TileLayer
+                url={tile.url}
+                // @ts-ignore
+                opacity={tile.opacity || 0.75}
+                attribution={tile.attribution}
+              />
+            </LayersControl.Overlay>
+          ))}
 
           <OverlayFeatureLayers
             // @ts-ignore
