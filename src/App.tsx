@@ -79,10 +79,12 @@ function App() {
           />
         </LayersControl>
 
-        <BottomLeftImages
-          imageNames={imageNames}
-          collapsed={window.innerWidth <= breakpoint}
-        />
+        {imageNames.length > 0 ? (
+          <BottomLeftImages
+            imageNames={imageNames}
+            collapsed={window.innerWidth <= breakpoint}
+          />
+        ) : null}
       </MapContainer>
     </>
   );
