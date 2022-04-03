@@ -1,6 +1,7 @@
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css";
 import "leaflet/dist/leaflet.css";
+import { isMobile } from "react-device-detect";
 import { Helmet } from "react-helmet";
 import {
   AttributionControl,
@@ -8,7 +9,7 @@ import {
   LayersControl,
   MapContainer,
   ScaleControl,
-  TileLayer,
+  TileLayer
 } from "react-leaflet";
 import { BottomLeftImages } from "./components/BottomLeftImages";
 import { OverlayFeatureLayers } from "./components/OverlayFeatureLayers";
@@ -16,8 +17,6 @@ import csvFeatureCollections from "./generated/csv-feature-collections.json";
 import config from "./generated/hazardmap-config.json";
 import imageNames from "./generated/image-names.json";
 import shikuchosonBoundary from "./generated/shikuchoson-boundary.json";
-
-const breakpoint = 768;
 
 const bounds: [number, number][] = [
   [shikuchosonBoundary.bbox[1], shikuchosonBoundary.bbox[0]],
@@ -53,10 +52,7 @@ export const App = () => (
         style={{ fillOpacity: 0 }}
       />
 
-      <LayersControl
-        position="topright"
-        collapsed={window.innerWidth <= breakpoint}
-      >
+      <LayersControl position="topright" collapsed={isMobile}>
         {config.tiles.map((tile) => (
           <LayersControl.Overlay
             key={tile.name}
@@ -79,10 +75,7 @@ export const App = () => (
       </LayersControl>
 
       {imageNames.length > 0 ? (
-        <BottomLeftImages
-          imageNames={imageNames}
-          collapsed={window.innerWidth <= breakpoint}
-        />
+        <BottomLeftImages imageNames={imageNames} collapsed={isMobile} />
       ) : null}
     </MapContainer>
   </>
