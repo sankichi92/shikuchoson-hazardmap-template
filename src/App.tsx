@@ -35,7 +35,7 @@ function App() {
         bounds={bounds}
         maxBounds={bounds}
         minZoom={5}
-        maxZoom={17}
+        maxZoom={17} // ハザードマップポータルサイトのデータの最大ズームレベル
         attributionControl={false}
         style={{ height: "100vh" }}
       >
