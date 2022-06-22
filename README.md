@@ -27,6 +27,10 @@
 
 この課題に対し、本プロジェクトは、市区町村の単位で Web ハザードマップを容易に作成・カスタマイズできるテンプレートを提供します。
 
+---
+
+関連: [34テラバイトのデータと格闘して「全国ハザードマップ」を公開した理由 - NHK](https://www3.nhk.or.jp/news/special/saigai/select-news/20220621_01.html)
+
 ## 使い方
 
 動画で見る: https://youtu.be/oc1CfaVSlno
