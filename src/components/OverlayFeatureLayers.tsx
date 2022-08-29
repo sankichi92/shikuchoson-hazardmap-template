@@ -18,7 +18,7 @@ const iconColors = [
   "orange",
   "yellow",
   "violet",
-  "gray",
+  "grey",
   "black",
 ];
 
