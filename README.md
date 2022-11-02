@@ -2,7 +2,7 @@
 
 市区町村の Web ハザードマップを作成するためのテンプレート。
 
-[Tokyo OSS Party!!](https://tokyo-oss-party.com/) 2021 の成果物です（[発表資料](https://speakerdeck.com/sankichi92/shikuchoson-hazardmap-template)）。
+[Tokyo OSS Party!! 2021](https://tokyo-oss.connpass.com/event/229199/) の成果物です（[発表資料](https://speakerdeck.com/sankichi92/shikuchoson-hazardmap-template)）。
 
 - [利用例は Wiki へ](https://github.com/sankichi92/shikuchoson-hazardmap-template/wiki)
 - [質問は Discussions へ](https://github.com/sankichi92/shikuchoson-hazardmap-template/discussions)
