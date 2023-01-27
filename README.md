@@ -40,28 +40,29 @@
 
 #### 1. テンプレートを使用して GitHub リポジトリを作成する
 
-1. 上部（あるいはこちら）の「[Use this template](https://github.com/sankichi92/shikuchoson-hazardmap-template/generate)」ボタンを押す
+1. 上部（あるいはこちら）の「[Use this template](https://github.com/sankichi92/shikuchoson-hazardmap-template/generate)」ボタンを押して新しいリポジトリを作成する。
 2. Repository name を入力（例: `hachioji-hazardmap`）し、「Create repository from template」ボタンを押す
    - Repository name が次の手順で公開する Web ページの URL の一部になります
 
 詳細: https://docs.github.com/ja/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
 
-#### 2. `hazardmap-config.jsonc` を対象の市区町村向けに更新する
+#### 2. 作成したリポジトリの設定で GitHub Pages を有効化して Web ページを公開できるようにする
+
+1. 上部タブ「Settings」→サイドバー「Pages」から GitHub Pages の設定画面へ移動する
+2. Source のプルダウンから「GitHub Actions」を選択する
+
+詳細: https://docs.github.com/ja/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#カスタム-github-actions-ワークフローによる公開
+
+#### 3. `hazardmap-config.jsonc` を対象の市区町村向けに更新する
 
 1. 作成したリポジトリの [`hazardmap-config.jsonc`](./hazardmap-config.jsonc) をクリックして開く
 2. ファイル右上の鉛筆✏️ボタンをクリックして編集画面を開く
-3. `prefecture` と `shikuchoson` の値をハザードマップを作成する都道府県・市区町村に変更して「Commit changes」ボタンを押す
+3. `prefecture` と `shikuchoson`（と必要に応じて `city`）の値をハザードマップを作成する都道府県・市区町村に変更して「Commit changes」ボタンを押す
    - 合わせて、不要な `tiles` の要素（`{}` で囲まれる単位）も消してください。たとえば、内陸であれば「高潮浸水想定区域」は不要でしょう
+4. しばらくするとハザードマップの作成・公開が行われる
+   - 公開されたハザードマップの URL は手順2を実施した「Settings」→「Pages」で確認できる
 
 詳細: https://docs.github.com/ja/repositories/working-with-files/managing-files/editing-files#editing-files-in-your-repository
-
-#### 3. 作成したリポジトリの設定で GitHub Pages を有効化して Web ページを公開する
-
-1. 上部タブ「Settings」→サイドバー「Pages」から GitHub Pages の設定画面へ移動する
-2. Source に「`gh-pages`」を選択して「Save」ボタンを押す
-3. しばらくすると、GitHub Pages の設定画面に URL が表示され、ハザードマップがその URL で公開される
-
-詳細: https://docs.github.com/ja/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
 ### ハザードマップのカスタマイズ
 
