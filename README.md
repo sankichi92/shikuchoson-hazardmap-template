@@ -48,9 +48,10 @@
 
 #### 2. `hazardmap-config.jsonc` を対象の市区町村向けに更新する
 
-1. 作成したリポジトリの [`hazardmap-config.jsonc`](./hazardmap-config.jsonc) をクリックして開く
-2. ファイル右上の鉛筆✏️ボタンをクリックして編集画面を開く
-3. `prefecture` と `shikuchoson` の値をハザードマップを作成する都道府県・市区町村に変更して「Commit changes」ボタンを押す
+1. 作成したリポジトリのSettingsを開き、"Code and automation"の中にある"Actions"のGeneralを開き、"Workflow permissions"を"Read and write permissions"へ変更する
+2. 作成したリポジトリの [`hazardmap-config.jsonc`](./hazardmap-config.jsonc) をクリックして開く
+3. ファイル右上の鉛筆✏️ボタンをクリックして編集画面を開く
+4. `prefecture` と `shikuchoson` の値をハザードマップを作成する都道府県・市区町村に変更して「Commit changes」ボタンを押す
    - 合わせて、不要な `tiles` の要素（`{}` で囲まれる単位）も消してください。たとえば、内陸であれば「高潮浸水想定区域」は不要でしょう
 
 詳細: https://docs.github.com/ja/repositories/working-with-files/managing-files/editing-files#editing-files-in-your-repository
