@@ -2,7 +2,7 @@
   "name": "shikuchoson-hazardmap-template",
   "private": true,
   "dependencies": {
-    "axios": "^0.30.3",
+    "axios": "^1.15.0",
     "bootstrap": "^5.1.3",
     "csv2geojson": "^5.1.2",
     "jsonc-parser": "^3.0.0",
